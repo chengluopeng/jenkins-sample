@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins-demo
-  namespace: devlopment
+  namespace: sit
 spec:
   replicas: 1
   selector:
@@ -14,7 +14,7 @@ spec:
         app: jenkins-demo
     spec:
       containers:
-      - image: abacus317/jenkins-demo:<BUILD_TAG>
+      - image: 192.168.1.99/test/jenkins-demo:<BUILD_TAG>
         imagePullPolicy: IfNotPresent
         name: jenkins-demo
         env:
@@ -25,7 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
    name: demo
-   namespace: devlopment
+   namespace: sit
 spec:
    selector:
      app: jenkins-demo
